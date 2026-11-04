@@ -1,0 +1,47 @@
+metadata:
+  generated: "2026-10-06"
+  source_plan: "docs/login-flow/plan.md"
+  target_tasks: "docs/login-flow/plan.md"
+summary:
+  total_plan_items: 7
+  covered_plan_items: 7
+  missing_plan_items: 0
+  coverage_percentage: 100.0
+  total_tasks_generated: 19
+  orphan_tasks: 0
+phases:
+  - phase_id: Phase-1
+    items:
+      - item_id: "1.1"
+        tasks: [T001, T002, T003]
+  - phase_id: Phase-2
+    items:
+      - item_id: "2.1"
+        tasks: [T004, T005, T006, T007]
+  - phase_id: Phase-3
+    items:
+      - item_id: "3.1"
+        tasks: [T008]
+  - phase_id: Phase-4
+    items:
+      - item_id: "4.1"
+        tasks: [T009, T010, T011]
+  - phase_id: Phase-5
+    items:
+      - item_id: "5.1"
+        tasks: [T012, T013, T014]
+        notes: "Refresh and bearer-token contracts confirmed."
+      - item_id: "5.2"
+        tasks: [T015, T016, T017]
+        notes: "Real shop-context loading; switching is demo-only until its backend contract is defined."
+  - phase_id: Phase-6
+    items:
+      - item_id: "6.1"
+        tasks: [T018, T019]
+missing_plan_items: []
+orphan_tasks: []
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "Planning coverage is complete, not runtime sign-off. Real shop switching remains deferred."

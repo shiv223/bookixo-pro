@@ -1,0 +1,141 @@
+metadata:
+  generated: "2026-10-06"
+  source_tasks: docs/post-login-home/plan.md
+  last_updated: "2026-10-06"
+  governing_standards: [docs/CODING_STANDARDS.md, .github/copilot-instructions.md]
+summary:
+  total_tasks: 12
+  completed_tasks: 12
+  in_progress_tasks: 0
+  pending_tasks: 0
+  completion_percentage: 100.0
+tasks:
+  - task_id: T001
+    description: "Define immutable scoped menu contracts"
+    status: completed
+    implementation:
+      files_changed: [lib/features/menu/domain/menu_snapshot.dart, lib/features/menu/domain/menu_repository.dart]
+    verification: {build_passed: true, evidence: "controller_test.dart scope and 59/60 boundary tests"}
+    upstream_trace: {plan_item: "1.1", requirements: [REQ-001, REQ-002, REQ-005, REQ-009]}
+  - task_id: T002
+    description: "Strict recursive array DTO and explicit demo response"
+    status: completed
+    implementation:
+      files_changed: [lib/features/menu/data/menu_response_dto.dart, lib/features/menu/data/mock_menu_repository.dart]
+    verification: {build_passed: true, evidence: "projection_test.dart malformed/nested/duplicate and exact-key cases"}
+    upstream_trace: {plan_item: "1.1", requirements: [REQ-001, REQ-002, REQ-005, REQ-009]}
+  - task_id: T003
+    description: "Sole mobile registry, independent tab bindings and projection"
+    status: completed
+    implementation:
+      files_changed: [lib/features/menu/presentation/mobile_menu_registry.dart, lib/features/menu/presentation/menu_projection.dart, lib/core/localization/app_strings.dart]
+    verification: {build_passed: true, evidence: "Six recognized keys -> five ordered tiles; zero/sole Operations/other nonempty landing tests"}
+    upstream_trace: {plan_item: "2.1", requirements: [REQ-002, REQ-003, REQ-004, REQ-007]}
+  - task_id: T004
+    description: "Protected confirmed GET and serialized durable scoped cache"
+    status: completed
+    implementation:
+      files_changed: [lib/features/menu/data/menu_cache_store.dart, lib/features/menu/data/menu_repository_impl.dart]
+    verification: {build_passed: true, evidence: "cache_repository_test.dart exact GET/query/Bearer, 401 recovery, 403, clear/write/scope tests"}
+    upstream_trace: {plan_item: "3.1", requirements: [REQ-001, REQ-005, REQ-006, REQ-009]}
+  - task_id: T005
+    description: "Single-flight refresh, stable account ownership, auth/shop/resume/logout integration"
+    status: completed
+    implementation:
+      files_changed: [lib/features/menu/presentation/menu_dependencies.dart, lib/features/menu/presentation/menu_controller.dart, lib/app.dart, lib/features/auth/presentation/auth_controller.dart, lib/features/shop_context/presentation/shop_context_controller.dart, lib/features/shop_context/presentation/selected_shop_provider.dart]
+    verification: {build_passed: true, evidence: "controller_test.dart 16 lifecycle/cache/race tests; app resume test; original auth lifecycle suite"}
+    upstream_trace: {plan_item: "3.1", requirements: [REQ-001, REQ-005, REQ-006, REQ-009]}
+  - task_id: T006
+    description: "Menu and successful-empty gates with recovery and notices"
+    status: completed
+    implementation:
+      files_changed: [lib/features/menu/presentation/menu_gate_screen.dart, lib/features/menu/presentation/no_access_screen.dart, lib/features/menu/presentation/menu_screen_tools.dart]
+    verification: {build_passed: true, evidence: "Real router cold failure/Retry, empty recovery, stale notice and fail-closed 403 tests"}
+    upstream_trace: {plan_item: "4.1", requirements: [REQ-004, REQ-006, REQ-010]}
+  - task_id: T007
+    description: "Reference-styled responsive menu-driven Home"
+    status: completed
+    implementation:
+      files_changed: [lib/features/home/presentation/home_screen.dart, lib/features/home/presentation/home_tile.dart, lib/core/widgets/brand_background.dart, lib/core/theme/app_tokens.dart, lib/core/theme/app_theme.dart]
+    verification: {build_passed: true, evidence: "Small 320px/2.5x light+dark, wide responsive grid, >=48 targets and short-list pull refresh"}
+    upstream_trace: {plan_item: "4.1", requirements: [REQ-004, REQ-006, REQ-010]}
+  - task_id: T008
+    description: "Price-free mock Queue with separately permitted tabs and all states"
+    status: completed
+    implementation:
+      files_changed: [lib/features/queue/domain/queue_item.dart, lib/features/queue/data/mock_queue_repository.dart, lib/features/queue/presentation/queue_controller.dart, lib/features/queue/presentation/queue_screen.dart]
+    verification: {build_passed: true, evidence: "queue_test.dart three tests; both tab-loss directions in real router"}
+    upstream_trace: {plan_item: "5.1", requirements: [REQ-003, REQ-010]}
+  - task_id: T009
+    description: "Dashboard native placeholder without live KPI fabrication"
+    status: completed
+    implementation:
+      files_changed: [lib/features/dashboard/presentation/dashboard_screen.dart]
+    verification: {build_passed: true, evidence: "Permitted Dashboard deep link and Dashboard stack/dialog revocation test"}
+    upstream_trace: {plan_item: "5.1", requirements: [REQ-003, REQ-010]}
+  - task_id: T010
+    description: "Web-only benefits, combined credits/packages and unavailable CTA"
+    status: completed
+    implementation:
+      files_changed: [lib/features/upsell/presentation/web_feature_screen.dart, lib/core/logging/app_logger.dart]
+    verification: {build_passed: true, evidence: "Allowlisted tile/button spy and every web route guarded/revoked; no URL handoff"}
+    upstream_trace: {plan_item: "6.1", requirements: [REQ-003, REQ-010]}
+  - task_id: T011
+    description: "Permission-aware route/tab/backstack/dialog guards; retire role landings"
+    status: completed
+    implementation:
+      files_changed: [lib/core/routing/menu_route_policy.dart, lib/core/routing/app_router.dart, lib/features/auth/domain/role_policy.dart, lib/features/auth/presentation/role_landing_screens.dart]
+      files_deleted: [lib/features/auth/presentation/owner_home_screen.dart, lib/features/attendance/presentation/employee_scan_screen.dart]
+    verification: {build_passed: true, evidence: "24 menu_navigation tests, original auth/shop route cases; no resurrected stack or deferred scan entry"}
+    upstream_trace: {plan_item: "7.1", requirements: [REQ-004, REQ-007, REQ-008, REQ-009]}
+  - task_id: T012
+    description: "Full deterministic acceptance suite, analyzer, formatting and documentation"
+    status: completed
+    implementation:
+      files_changed:
+        - test/features/menu/projection_test.dart
+        - test/features/menu/cache_repository_test.dart
+        - test/features/menu/controller_test.dart
+        - test/features/queue/queue_test.dart
+        - test/core/routing/menu_navigation_test.dart
+        - test/core/routing/route_widget_test.dart
+        - test/core/network/auth_interceptor_test.dart
+        - test/features/auth/lifecycle_test.dart
+        - test/features/shop_context/controller_test.dart
+        - test/support/fakes.dart
+        - docs/PROJECT_SPEC.md
+        - README.md
+        - docs/post-login-home/plan.md
+        - docs/post-login-home/batch-report.yaml
+        - docs/post-login-home/checkpoints/tasks-to-impl.yaml
+    verification:
+      build_passed: true
+      test_results:
+        command: '& C:\Workstations\flutter\bin\flutter.bat test'
+        passed: 167
+        failed: 0
+        skipped: 0
+        failures: []
+      notes: "flutter analyze: zero issues; functions.problems: zero; Dart files formatted using functions.dart_format. Compile evidence is test compilation, not a native-device build."
+    upstream_trace: {plan_item: "8.1", requirements: [REQ-001, REQ-002, REQ-003, REQ-004, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, REQ-010]}
+pending_tasks: []
+untracked_changes: []
+traceability_chain:
+  - {requirement: REQ-001, tasks: [T001, T002, T004, T005, T012], status: complete}
+  - {requirement: REQ-002, tasks: [T001, T002, T003, T012], status: complete}
+  - {requirement: REQ-003, tasks: [T003, T008, T009, T010, T012], status: complete}
+  - {requirement: REQ-004, tasks: [T003, T006, T007, T011, T012], status: complete}
+  - {requirement: REQ-005, tasks: [T001, T004, T005, T012], status: complete}
+  - {requirement: REQ-006, tasks: [T005, T006, T007, T012], status: complete}
+  - {requirement: REQ-007, tasks: [T003, T011, T012], status: complete}
+  - {requirement: REQ-008, tasks: [T004, T011, T012], status: complete}
+  - {requirement: REQ-009, tasks: [T001, T004, T005, T011, T012], status: complete}
+  - {requirement: REQ-010, tasks: [T006, T007, T008, T009, T010, T012], status: complete}
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "Live backend tests need credentials and a reachable backend."
+    - "Native Android/iOS secure storage, transport, lifecycle and process-restart checks remain outstanding."
+    - "Queue is mocked; Dashboard placeholder; web destinations, attendance and real shop switching are deferred."
+  blocking_issues: []

@@ -1,0 +1,23 @@
+metadata:
+  source_plan: "docs/post-login-home/plan.md"
+  target_tasks: "docs/post-login-home/plan.md"
+summary:
+  total_plan_items: 8
+  covered_plan_items: 8
+  missing_plan_items: 0
+  total_tasks_generated: 12
+  orphan_tasks: 0
+items:
+  "1.1": [T001, T002]
+  "2.1": [T003]
+  "3.1": [T004, T005]
+  "4.1": [T006, T007]
+  "5.1": [T008, T009]
+  "6.1": [T010]
+  "7.1": [T011]
+  "8.1": [T012]
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "All plan items mapped; core menu integration unblocked. Real shop switching and web destinations remain deferred."

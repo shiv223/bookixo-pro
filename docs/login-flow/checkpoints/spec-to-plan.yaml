@@ -1,0 +1,40 @@
+metadata:
+  generated: "2026-10-06"
+  source_spec: "User login request and docs/PROJECT_SPEC.md"
+  target_plan: "docs/login-flow/plan.md"
+summary:
+  total_requirements: 11
+  covered_requirements: 11
+  missing_requirements: 0
+  coverage_percentage: 100.0
+requirements:
+  - req_id: REQ-001
+    plan_items: ["3.1", "6.1"]
+  - req_id: REQ-002
+    plan_items: ["2.1", "3.1", "6.1"]
+  - req_id: REQ-003
+    plan_items: ["2.1", "4.1", "6.1"]
+  - req_id: REQ-004
+    plan_items: ["2.1", "3.1", "6.1"]
+  - req_id: REQ-005
+    plan_items: ["2.1", "4.1", "5.1", "6.1"]
+  - req_id: REQ-006
+    plan_items: ["5.1", "6.1"]
+  - req_id: REQ-007
+    plan_items: ["4.1", "5.1", "5.2", "6.1"]
+  - req_id: REQ-008
+    plan_items: ["1.1", "5.1", "6.1"]
+  - req_id: REQ-009
+    plan_items: ["4.1", "5.2", "6.1"]
+  - req_id: REQ-010
+    plan_items: ["1.1", "6.1"]
+  - req_id: REQ-011
+    plan_items: ["5.2", "6.1"]
+missing_requirements: []
+orphan_plan_items: []
+validation:
+  passed: true
+  errors: []
+  warnings:
+    - "Planning coverage is complete; real shop switching is explicitly deferred pending its backend contract."
+    - "No Flutter scaffold or runtime validation exists yet."

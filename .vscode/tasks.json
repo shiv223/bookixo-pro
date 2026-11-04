@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build Android debug APK",
+			"type": "shell",
+			"command": "flutter",
+			"args": [
+				"build",
+				"apk",
+				"--debug",
+				"--no-pub"
+			],
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

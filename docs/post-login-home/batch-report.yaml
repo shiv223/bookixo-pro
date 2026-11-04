@@ -1,0 +1,287 @@
+batch_id: post-login-home-B01
+current_increment: home-logo-and-unified-tiles
+historical_evidence_note: "Original batch and visual-follow-up evidence below is historical. Current implementation and validation are recorded in home_logo_and_unified_tiles; do not use the older test/tool counts as current evidence."
+status: completed
+completed_tasks: [T001, T002, T003, T004, T005, T006, T007, T008, T009, T010, T011, T012]
+blocked_tasks: []
+protocol_violation: false
+errors: []
+baseline:
+  repository: shiv223/bookixo-pro
+  working_directory: 'C:\Workstations\Platform Applications\bookixo-pro'
+  dirty_at_start: "index.html modified; Flutter scaffold, lib, test, docs, README and configuration untracked"
+  preserved: "Existing login/session/theme and numeric userId normalization; index.html and login-flow reports were not edited."
+  commits_created: 0
+  dependencies_added: 0
+  nested_agents: 0
+  constitution: "docs/CODING_STANDARDS.md and .github/copilot-instructions.md, as approved"
+required_endpoints:
+  - method: GET
+    path: api/navigation/me
+    query: "dio queryParameters: {shopId: selected validated shop ID}"
+    authentication: "Existing protected access-token Bearer client; bounded 401 recovery"
+    response: "Top-level array; nonempty exact menuKey and children array recursively"
+    status: implemented
+    verification: "Deterministic HTTP adapter contract tests, not a live backend probe"
+files_changed:
+  T001:
+    - {file: lib/features/menu/domain/menu_snapshot.dart, change_type: created, description: "Immutable exact-key snapshot, stable scope and 60-second threshold"}
+    - {file: lib/features/menu/domain/menu_repository.dart, change_type: created, description: "Fetch/read/write/clear domain boundary"}
+  T002:
+    - {file: lib/features/menu/data/menu_response_dto.dart, change_type: created, description: "Strict recursive array parser; unknown parents traversed and keys deduplicated"}
+    - {file: lib/features/menu/data/mock_menu_repository.dart, change_type: created, description: "Explicit six-key demo fixture without customers or attendance"}
+  T003:
+    - {file: lib/features/menu/presentation/mobile_menu_registry.dart, change_type: created, description: "Sole mobile titles/icons/routes/kinds/order/tab registry"}
+    - {file: lib/features/menu/presentation/menu_projection.dart, change_type: created, description: "Pure exact-key intersection, five-tile projection and landing rules"}
+    - {file: lib/core/localization/app_strings.dart, change_type: modified, description: "Centralized Home/menu/queue/upsell copy"}
+  T004:
+    - {file: lib/features/menu/data/menu_cache_store.dart, change_type: created, description: "Versioned separate secure-storage key; scoped validation and serialized IO"}
+    - {file: lib/features/menu/data/menu_repository_impl.dart, change_type: created, description: "Confirmed protected GET with shopId queryParameters and typed failures"}
+  T005:
+    - {file: lib/features/menu/presentation/menu_dependencies.dart, change_type: created, description: "Injectable durable cache, real/demo repositories and sanitized logger"}
+    - {file: lib/features/menu/presentation/menu_controller.dart, change_type: created, description: "Refresh-first startup/login; single-flight/manual/resume refresh; fallback and revocations"}
+    - {file: lib/app.dart, change_type: modified, description: "Auth-first lifecycle resume followed by throttled menu refresh"}
+    - {file: lib/features/auth/presentation/auth_controller.dart, change_type: modified, description: "Explicit stable ownership; all logout paths clear menu and session, deletion errors stay locked"}
+    - {file: lib/features/shop_context/presentation/shop_context_controller.dart, change_type: modified, description: "Stable session selection instead of renewal-revision reload"}
+    - {file: lib/features/shop_context/presentation/selected_shop_provider.dart, change_type: created, description: "Selected shop validated against server context"}
+  T006:
+    - {file: lib/features/menu/presentation/menu_gate_screen.dart, change_type: created, description: "Loading/error/Retry/Logout without default full access"}
+    - {file: lib/features/menu/presentation/no_access_screen.dart, change_type: created, description: "Successful empty projection; refresh and Logout"}
+    - {file: lib/features/menu/presentation/menu_screen_tools.dart, change_type: created, description: "Shared refresh/logout and stale/storage/session notices"}
+  T007:
+    - {file: lib/features/home/presentation/home_screen.dart, change_type: created, description: "Rounded branded header, validated shop, responsive sections and always-scrollable pull refresh"}
+    - {file: lib/features/home/presentation/home_tile.dart, change_type: created, description: "Blue Operations, orange Dashboard and locked web mini-cards"}
+    - {file: lib/core/theme/app_tokens.dart, change_type: modified, description: "Shared Home layout and exact CSS135 tile gradient tokens"}
+    - {file: lib/core/theme/app_theme.dart, change_type: modified, description: "Shared 48px outlined-button targets"}
+    - {file: lib/core/widgets/brand_background.dart, change_type: created, description: "Gradients painted from actual text-expanded layout dimensions"}
+  T008:
+    - {file: lib/features/queue/domain/queue_item.dart, change_type: created, description: "Price-free immutable sample model and repository interface"}
+    - {file: lib/features/queue/data/mock_queue_repository.dart, change_type: created, description: "Deterministic sample-only queue, no live endpoints"}
+    - {file: lib/features/queue/presentation/queue_controller.dart, change_type: created, description: "Scoped permitted-tab data with loading/error/empty/success"}
+    - {file: lib/features/queue/presentation/queue_screen.dart, change_type: created, description: "Independently permitted tabs and refresh, no mutation actions"}
+  T009:
+    - {file: lib/features/dashboard/presentation/dashboard_screen.dart, change_type: created, description: "Native placeholder without fabricated KPIs"}
+  T010:
+    - {file: lib/features/upsell/presentation/web_feature_screen.dart, change_type: created, description: "Mobile benefits and explicit unavailable CTA without URL or token handoff"}
+    - {file: lib/core/logging/app_logger.dart, change_type: modified, description: "Fixed allowlisted upsell events and sanitized menu failure stack logging"}
+  T011:
+    - {file: lib/core/routing/menu_route_policy.dart, change_type: created, description: "Pure registry-derived route and independent-tab guards"}
+    - {file: lib/core/routing/app_router.dart, change_type: modified, description: "Permission-aware redirects; gated deep-link retention; stack/dialog pruning on loss"}
+    - {file: lib/features/auth/domain/role_policy.dart, change_type: modified, description: "Retain display group mapping; remove role landing responsibility"}
+    - {file: lib/features/auth/presentation/role_landing_screens.dart, change_type: modified, description: "Only existing unsupported-account registration remains"}
+    - {file: lib/features/auth/presentation/owner_home_screen.dart, change_type: deleted, description: "Remove unused obsolete role-only Home placeholder"}
+    - {file: lib/features/attendance/presentation/employee_scan_screen.dart, change_type: deleted, description: "Remove unused attendance placeholder; legacy scan redirects safely"}
+  T012:
+    - {file: test/features/menu/projection_test.dart, change_type: created, description: "Strict contract and six-key/five-tile projection matrix"}
+    - {file: test/features/menu/cache_repository_test.dart, change_type: created, description: "Durable scope/serialization/exact GET/401/403 contract coverage"}
+    - {file: test/features/menu/controller_test.dart, change_type: created, description: "Clock boundaries, stale/cache failure, fresh zero, logout/account/shop races"}
+    - {file: test/features/queue/queue_test.dart, change_type: created, description: "Price-free mock and loading/empty/error/Retry/success/unpermitted-tab coverage"}
+    - {file: test/core/routing/menu_navigation_test.dart, change_type: created, description: "Real GoRouter route/tab/dialog/backstack matrix, layout, pull/resume and upsell events"}
+    - {file: test/core/routing/route_widget_test.dart, change_type: modified, description: "Preserve auth/shop cases, replace obsolete role landings with menu policy"}
+    - {file: test/core/network/auth_interceptor_test.dart, change_type: modified, description: "Inject isolated menu storage into existing protected-auth tests"}
+    - {file: test/features/auth/lifecycle_test.dart, change_type: modified, description: "Inject isolated menu storage; retain original auth lifecycle assertions"}
+    - {file: test/features/shop_context/controller_test.dart, change_type: modified, description: "Inject isolated durable menu cleanup in demo logout test"}
+    - {file: test/support/fakes.dart, change_type: modified, description: "Numeric API userId default and controllable write/delete gates"}
+    - {file: docs/PROJECT_SPEC.md, change_type: modified, description: "Implemented increment and explicit backlog/native/live gaps"}
+    - {file: README.md, change_type: modified, description: "Confirmed contract, cache/routing behavior and remaining integrations"}
+    - {file: docs/post-login-home/plan.md, change_type: modified, description: "T001-T012 checked complete and bounded delivery status"}
+    - {file: docs/post-login-home/batch-report.yaml, change_type: created, description: "This exact file/task/validation evidence"}
+    - {file: docs/post-login-home/checkpoints/tasks-to-impl.yaml, change_type: created, description: "Requirement/task/file/test handoff traceability"}
+historical_changed_file_count: 51
+upstream_artifacts_consumed:
+  T001: [{artifact: docs/post-login-home/plan.md, used_for: "Scope, model and cache contract; P1.1"}]
+  T002: [{artifact: docs/post-login-home/plan.md, used_for: "Confirmed recursive array contract; P1.1"}]
+  T003: [{artifact: docs/post-login-home/plan.md, used_for: "Single registry table, tab bindings and landing rules; P2.1"}]
+  T004: [{artifact: docs/post-login-home/plan.md, used_for: "Protected endpoint, selected shop and durable storage; P3.1"}]
+  T005: [{artifact: docs/post-login-home/plan.md, used_for: "Refresh, ownership, stale fallback and logout requirements; P3.1"}]
+  T006: [{artifact: docs/post-login-home/plan.md, used_for: "Access gate states; P4.1"}]
+  T007: [{artifact: index.html, used_for: "Home header/native tile/web mini-card visual reference; undefined header token replaced by existing brand gradient"}]
+  T008: [{artifact: docs/PROJECT_SPEC.md, used_for: "Exact statuses and price-free employee models; P5.1"}]
+  T009: [{artifact: docs/post-login-home/plan.md, used_for: "No fabricated live KPI requirement; P5.1"}]
+  T010: [{artifact: docs/post-login-home/plan.md, used_for: "Combined credits/packages and no approved web destination; P6.1"}]
+  T011: [{artifact: docs/post-login-home/plan.md, used_for: "Gate precedence, deep-link/tab/backstack/dialog policy; P7.1"}]
+  T012:
+    - {artifact: docs/CODING_STANDARDS.md, used_for: "Typed failures, accessibility, deterministic tests and zero analyze issues"}
+    - {artifact: .github/copilot-instructions.md, used_for: "Feature layering, shared theme and installed API verification"}
+    - {artifact: docs/post-login-home/checkpoints/plan-to-tasks.yaml, used_for: "Eight plan sections mapped to twelve tasks"}
+    - {artifact: docs/post-login-home/checkpoints/spec-to-plan.yaml, used_for: "Ten local requirements mapped to approved plan"}
+evidence_mapping:
+  T001: [{upstream: "plan.md#Menu domain", output: menu_snapshot.dart, evidence: "controller_test clock boundaries and scoped race tests"}]
+  T002: [{upstream: "plan.md#Tree flattening", output: menu_response_dto.dart, evidence: "projection_test malformed/nested/duplicate/exact-key cases"}]
+  T003: [{upstream: "plan.md#ONE mobile registry", output: mobile_menu_registry.dart, evidence: "projection_test six keys -> five ordered tiles"}]
+  T004: [{upstream: "plan.md#Confirmed menu API", output: menu_repository_impl.dart, evidence: "cache_repository_test exact request/Bearer and bounded 401 tests"}]
+  T005: [{upstream: "plan.md#Cache and refresh policy", output: menu_controller.dart, evidence: "16 controller tests including token rotation, empty revocation, recoverable-only fallback and races"}]
+  T006: [{upstream: "plan.md#Route table", output: menu_gate_screen.dart, evidence: "menu_navigation_test cold failure and successful empty recovery"}]
+  T007: [{upstream: "index.html#Home visual reference", output: home_screen.dart, evidence: "320px 2.5x light/dark, responsive grid, short-list pull refresh tests"}]
+  T008: [{upstream: "plan.md#P5.1", output: queue_screen.dart, evidence: "queue_test model/source and all async states"}]
+  T009: [{upstream: "plan.md#P5.1", output: dashboard_screen.dart, evidence: "permitted direct route and Dashboard revocation tests"}]
+  T010: [{upstream: "plan.md#P6.1", output: web_feature_screen.dart, evidence: "upsell allowlisted tile/button event and unavailable CTA test"}]
+  T011: [{upstream: "plan.md#Route table and guards", output: app_router.dart, evidence: "Every registry route revoked with pushed stack/dialog/back/reentry; both queue-tab loss directions"}]
+  T012: [{upstream: "plan.md#Acceptance matrix", output: test/, evidence: "167 full-suite passes; zero analyzer and Problems issues"}]
+traceability:
+  - {requirement: REQ-001, plan_item: "1.1/3.1/8.1", task: "T001/T002/T004/T005/T012", files: [lib/features/menu/data/menu_repository_impl.dart, test/features/menu/cache_repository_test.dart], status: completed}
+  - {requirement: REQ-002, plan_item: "1.1/2.1/8.1", task: "T002/T003/T012", files: [lib/features/menu/data/menu_response_dto.dart, lib/features/menu/presentation/mobile_menu_registry.dart, test/features/menu/projection_test.dart], status: completed}
+  - {requirement: REQ-003, plan_item: "2.1/5.1/6.1/8.1", task: "T003/T008/T009/T010/T012", files: [lib/features/queue/presentation/queue_screen.dart, lib/features/upsell/presentation/web_feature_screen.dart], status: completed}
+  - {requirement: REQ-004, plan_item: "2.1/4.1/7.1/8.1", task: "T003/T006/T007/T011/T012", files: [lib/features/menu/presentation/menu_projection.dart, lib/core/routing/menu_route_policy.dart], status: completed}
+  - {requirement: REQ-005, plan_item: "1.1/3.1/8.1", task: "T001/T004/T005/T012", files: [lib/features/menu/data/menu_cache_store.dart, test/features/menu/controller_test.dart], status: completed}
+  - {requirement: REQ-006, plan_item: "3.1/4.1/8.1", task: "T005/T006/T007/T012", files: [lib/app.dart, lib/features/home/presentation/home_screen.dart, test/core/routing/menu_navigation_test.dart], status: completed}
+  - {requirement: REQ-007, plan_item: "2.1/7.1/8.1", task: "T003/T011/T012", files: [lib/core/routing/app_router.dart, test/core/routing/menu_navigation_test.dart], status: completed}
+  - {requirement: REQ-008, plan_item: "7.1/8.1", task: "T004/T011/T012", files: [lib/features/menu/data/menu_repository_impl.dart, README.md, test/core/network/auth_interceptor_test.dart], status: completed}
+  - {requirement: REQ-009, plan_item: "1.1/3.1/7.1/8.1", task: "T001/T004/T005/T011/T012", files: [lib/features/auth/presentation/auth_controller.dart, lib/features/menu/data/menu_cache_store.dart, test/features/menu/controller_test.dart], status: completed}
+  - {requirement: REQ-010, plan_item: "4.1/5.1/6.1/8.1", task: "T006/T007/T008/T009/T010/T012", files: [lib/features/home/presentation/home_screen.dart, test/features/queue/queue_test.dart, docs/PROJECT_SPEC.md], status: completed}
+historical_batch_test_results:
+  post_login_acceptance:
+    command: '& C:\Workstations\flutter\bin\flutter.bat test test\features\menu test\features\queue test\core\routing\menu_navigation_test.dart'
+    passed: 54
+    failed: 0
+    skipped: 0
+    failures: []
+  full_suite:
+    command: '& C:\Workstations\flutter\bin\flutter.bat test'
+    passed: 167
+    failed: 0
+    skipped: 0
+    failures: []
+  analysis:
+    command: '& C:\Workstations\flutter\bin\flutter.bat analyze'
+    issues: 0
+  editor_problems:
+    tool: functions.problems
+    issues: 0
+  formatting:
+    tool: functions.dart_format
+    scope: "All created/modified Dart files; no terminal formatter used"
+  test_discovery:
+    tool: functions.runTests
+    result: "No tests found by editor discovery; used permitted Flutter CLI fallback"
+  dtd:
+    result: "IDE DTD discovered; no active app connection. No app server launched or hot reload attempted."
+validation_notes:
+  - "Core parser/projection tests were written first and observed failing before implementation, then passed."
+  - "Initial integration defects (async boot completion, test cache queue scheduling, concurrent redirect parsing, and test config/import ambiguity) were fixed; final failures are zero."
+  - "Installed APIs checked: dio 5.11.1, go_router 18.0.2, flutter_riverpod 3.4.3, flutter_secure_storage 11.2.0. Used package source/README and current official API docs."
+  - "Original auth assertions retained; obsolete role-only route assertions updated to approved menu/attendance policy."
+warnings:
+  - {severity: INFO, message: "No credentials supplied: real menu/shop/auth backend requests were not executed."}
+  - {severity: INFO, message: "Android/iOS secure storage, lifecycle, transport, process restart and native navigation require device verification. No native build/device sign-off."}
+  - {severity: INFO, message: "Live queue claiming/services/Add walk-in/payments/customer creation, attendance and real shop switching are deferred."}
+  - {severity: INFO, message: "Dashboard is a native placeholder; Queue is deterministic price-free sample data."}
+  - {severity: INFO, message: "Approved HTTPS web destinations still needed; current CTA is explicitly unavailable."}
+  - {severity: INFO, message: "Server inactive-key filtering, omitted/null leaf children and menu-403 semantics remain live-contract follow-ups; mobile projection has no roles/isActive filtering."}
+home_visual_fidelity_follow_up:
+  date: "2026-10-06"
+  scope: "Home-only presentation correction; original batch evidence above remains historical."
+  preserved: "Dirty worktree and index.html; menu key filtering/order, domain, routes, cache, logout and backend behavior."
+  files:
+    - lib/features/home/presentation/home_screen.dart
+    - lib/features/home/presentation/home_tile.dart
+    - lib/features/menu/presentation/mobile_menu_registry.dart
+    - lib/core/theme/app_tokens.dart
+    - lib/core/widgets/brand_background.dart
+    - lib/core/localization/app_strings.dart
+    - test/features/home/home_visual_test.dart
+    - docs/post-login-home/plan.md
+    - docs/post-login-home/batch-report.yaml
+  corrections:
+    - "Compact local-logo/welcome/shop-role header and white Logout pill instead of stacked app branding."
+    - "CSS160 header gradient, 28px bottom radius and 8px overlapping content."
+    - "Horizontal native cards, scissors/chart icons, Dashboard / KPI label, CSS135 teal/orange gradients, compact typography and spacing."
+    - "Two-column phone-width web mini-cards, local tag/gift/diamond icons, top-right locks and no redundant subtitle."
+    - "Home tokens centralized; large text expands cards/profile and collapses the web grid."
+  necessary_deviations:
+    - "Add customers remains hidden; Credits & Packages remains one tile, in mobile registry order."
+    - "Operations follows the current HTML's later teal override (`#17A590` to `#0B7D6E`), replacing the earlier blue product statement."
+    - "48px Logout target, dark Dashboard ink for orange contrast, wrapping and stacked layout at large text."
+  visual_evidence:
+    reference: "Opened current local index.html in browser, reached owner Home, captured screenshot and measured DOM at 390x780."
+    measured_flutter: "SDK-bundled Roboto fixture; header 108px, native tile x20/width350/y~100, overlap8, native gap14, web widths170/gutter10."
+    responsive: "320x568 light/dark at text scales 1.0 and 2.5, with scrolling and no overflow."
+    device: "Existing motorola Flutter Home inspected through DTD; successful hot reload and no runtime errors after changes."
+    limits: "Driver screenshots unavailable because the live app has no driver extension. No paired Flutter/browser screenshot diff or exact pixel-match claim; no new tooling or scaffold added."
+  verification:
+    analyze: "No issues found"
+    full_flutter_test: "175 passed; original baseline 167 plus 8 new Home tests"
+    editor_problems: "No errors found"
+    formatting: "functions.dart_format on every touched Dart file; no terminal formatter"
+    test_discovery: "Editor found no tests; Flutter CLI fallback used"
+  dependencies_added: 0
+  commits_created: 0
+  nested_agents: 0
+  remaining_mocked: "Price-free Queue samples and Dashboard placeholder unchanged; web destination unavailable and shop switching demo-only."
+home_logo_and_unified_tiles:
+  date: "2026-10-06"
+  status: implemented_tests_and_analysis_passed_editor_tooling_blocked
+  baseline_tests: 175
+  changed_file_count: 26
+  files:
+    - lib/core/errors/app_failure.dart
+    - lib/core/localization/app_strings.dart
+    - lib/core/logging/app_logger.dart
+    - lib/core/theme/app_tokens.dart
+    - lib/core/widgets/brand_background.dart
+    - lib/features/home/data/logo_image_policy.dart
+    - lib/features/home/data/shop_logo_dto.dart
+    - lib/features/home/data/shop_logo_repository_impl.dart
+    - lib/features/home/domain/shop_logo.dart
+    - lib/features/home/domain/shop_logo_repository.dart
+    - lib/features/home/presentation/home_logo.dart
+    - lib/features/home/presentation/home_screen.dart
+    - lib/features/home/presentation/home_tile.dart
+    - lib/features/home/presentation/shop_logo_controller.dart
+    - lib/features/menu/presentation/mobile_menu_registry.dart
+    - lib/features/upsell/presentation/web_feature_screen.dart
+    - test/core/routing/menu_navigation_test.dart
+    - test/core/routing/route_widget_test.dart
+    - test/features/home/home_visual_test.dart
+    - test/features/home/logo_controller_test.dart
+    - test/features/home/logo_repository_test.dart
+    - test/features/home/logo_widget_test.dart
+    - docs/PROJECT_SPEC.md
+    - docs/post-login-home/plan.md
+    - docs/post-login-home/batch-report.yaml
+    - README.md
+  contract:
+    method: GET
+    path: "api/shops/{validatedSelectedShopId}/logo"
+    authentication: "Existing ACCESS Bearer protected Dio; existing safe-GET bounded 401 recovery/logout"
+    response_200: "Typed JSON DTO with valid HTTPS logoUrl"
+    response_204: "No body, confirmed absence"
+    forbidden: "Shared ForbiddenFailure retained, never fabricated absence"
+    image_transport: "Built-in Flutter NetworkImage, empty headers, no protected Dio/interceptor reuse"
+    decoder: "Actual synthetic JPEG and PNG bytes; no extension requirement"
+  refresh_and_cleanup:
+    - "Memory-only presigned links; no URL/query/exception-message logging or durable logo storage"
+    - "Stable account identity + explicit login ownership + validated selected shop; token rotation alone does not fetch"
+    - "Single-flight initial/manual/foreground loads; Home pull/button refresh requests both menu and logo independently"
+    - "Optional usable X-Amz-Date/Expires metadata schedules expiry refresh, otherwise foreground triggers; no fixed 900s or reused 60s menu threshold"
+    - "Expired/403 image failure retries the logo API once per explicit refresh chain; ordinary decode failure does not retry automatically"
+    - "Default 42px rounded cover-crop artwork while loading/absent/failed; nonblocking friendly Retry and fixed sanitized logger contexts"
+    - "Epoch/scope checks discard old-account/shop/logout results; evict exact owned NetworkImage key, never global cache deletion"
+  unified_tiles:
+    - "Regular horizontal full-width cards for the existing registered Offers, Credits & Packages and Membership"
+    - "Visible Web only badge and accessible button label/tap action; no web heading or compact grid"
+    - "Registry owns backgrounds; shared blue/purple tokens, unchanged teal Operations and orange Dashboard"
+    - "Existing kinds, keys, landing rules, guards, cache, routes, logging, combined Credits & Packages and excluded Add customers retained"
+    - "Benefits page says Currently available on Bookixo web; approved web destination still unavailable"
+  verification:
+    sdk: "C:/Workstations/flutter/bin/flutter.bat"
+    full_suite: {command: "flutter test", passed: 212, failed: 0, skipped: 0}
+    new_tests: 37
+    home_tests_in_full_suite: 45
+    analyze: {command: "flutter analyze", issues: 0}
+    regression: "Existing permissions/landing/revocation/cache/role tests remain in the full suite; old grid geometry assertions updated to requested regular cards"
+    tests_first: "New parser/repository tests observed failing on missing implementation before data code was added; regular-card assertions updated before UI implementation"
+    deterministic: "Fake API adapters/repositories, storage and clocks; generated JPEG/PNG pixel bytes through fake HttpClient; no live S3/backend/credential calls in tests"
+    package_apis: "Installed dio 5.11.1 and Riverpod 3.4.3 source docs inspected; installed Flutter Image/NetworkImage APIs inspected; no dependencies added"
+    formatting: "functions.dart_format attempted for all 22 touched Dart files; every invocation returned No client was connected. No CLI or manual formatting fallback."
+    editor_problems: "functions.problems attempted; No client was connected. No editor zero-issues claim."
+    live_app: "DTD initially listed a Motorola app, but it disconnected before verification. Hot reload reported no active connection; reconnect was refused; rediscovery found only IDE DTD. No server/build/restart launched and no successful hot reload claim."
+  preserved: "Dirty baseline preserved, index.html and all unrelated auth/menu/cache/routing/queue/scaffold/lockfile files untouched"
+  remaining_gaps:
+    - "Editor formatting/Problems verification blocked by disconnected client"
+    - "No live logo backend/S3 or native lifecycle/storage/transport sign-off; no iOS build"
+    - "Queue and Dashboard remain mocked; demo logo is absent and shop switching is demo-only"
+    - "Web destination URLs remain unconfirmed; CTA stays explicitly unavailable"
+  dependencies_added: 0
+  commits_created: 0
+  nested_agents: 0

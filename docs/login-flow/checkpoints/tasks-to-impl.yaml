@@ -1,0 +1,161 @@
+metadata:
+  generated: "2026-10-06"
+  last_updated: "2026-10-06"
+  source_tasks: docs/login-flow/plan.md
+  batch_report: docs/login-flow/batch-report.yaml
+summary:
+  total_tasks: 19
+  completed_tasks: 18
+  in_progress_tasks: 0
+  pending_tasks: 1
+  completion_percentage: 94.74
+verification: &verification
+  build_passed: null
+  analyze_issues: 0
+  test_results:
+    command: flutter test --no-pub --reporter expanded
+    passed: 91
+    failed: 0
+    skipped: 0
+    failures: []
+  notes: "Deterministic Flutter suite verified; native APK/IPA/manual secure storage and lifecycle not verified."
+tasks:
+  - task_id: T001
+    description: "Scaffolding and verifying installed mandated packages"
+    status: completed
+    implementation: {files: [pubspec.yaml, pubspec.lock, analysis_options.yaml, .metadata, .gitignore, android, ios]}
+    verification: *verification
+    upstream_trace: {plan_item: "1.1", requirements: [REQ-008, REQ-010]}
+  - task_id: T002
+    description: "Configuring URL policy, theme, strings and debug-only transport"
+    status: completed
+    implementation: {files: [lib/core/config/app_config.dart, lib/core/theme, lib/core/localization/app_strings.dart, android/app/src/debug/AndroidManifest.xml, android/app/src/main/AndroidManifest.xml, ios/Runner/Info-Debug.plist, ios/Runner.xcodeproj/project.pbxproj]}
+    verification: *verification
+    upstream_trace: {plan_item: "1.1", requirements: [REQ-008, REQ-010]}
+  - task_id: T003
+    description: "Implementing typed errors and sanitized global boundary"
+    status: completed
+    implementation: {files: [lib/core/errors, lib/core/logging, lib/main.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "1.1", requirements: [REQ-010]}
+  - task_id: T004
+    description: "Defining auth contracts and one ordered role policy"
+    status: completed
+    implementation: {files: [lib/features/auth/domain/auth_models.dart, lib/features/auth/domain/auth_repository.dart, lib/features/auth/domain/role_policy.dart, lib/features/auth/domain/session_access.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "2.1", requirements: [REQ-002, REQ-003, REQ-004, REQ-005]}
+  - task_id: T005
+    description: "Implementing strict DTOs and structural Cognito display decoding"
+    status: completed
+    implementation: {files: [lib/features/auth/data/sign_in_response_dto.dart, lib/features/auth/data/cognito_identity_decoder.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "2.1", requirements: [REQ-002, REQ-003, REQ-004]}
+  - task_id: T006
+    description: "Implementing serialized secure bundles and explicit demo dependencies"
+    status: completed
+    implementation: {files: [lib/features/auth/data/secure_session_store.dart, lib/features/auth/data/mock_auth_repository.dart, lib/features/auth/data/refresh_transport.dart, lib/features/auth/presentation/auth_dependencies.dart, lib/core/time/session_clock.dart, ios/Runner/DebugProfile.entitlements, ios/Runner/Release.entitlements, android/app/build.gradle.kts]}
+    verification: *verification
+    upstream_trace: {plan_item: "2.1", requirements: [REQ-005, REQ-010]}
+  - task_id: T007
+    description: "Implementing exact sign-in repository and configured Dio"
+    status: completed
+    implementation: {files: [lib/features/auth/data/auth_repository_impl.dart, lib/core/network/dio_provider.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "2.1", requirements: [REQ-002, REQ-005, REQ-008]}
+  - task_id: T008
+    description: "Implementing login form, validation, duplicate prevention and guidance"
+    status: completed
+    implementation: {files: [lib/features/auth/presentation/login_controller.dart, lib/features/auth/presentation/login_screen.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "3.1", requirements: [REQ-001, REQ-002, REQ-004]}
+  - task_id: T009
+    description: "Implementing startup restoration and locked race-safe logout"
+    status: completed
+    implementation: {files: [lib/features/auth/presentation/auth_controller.dart, lib/features/auth/presentation/session_gate_screen.dart, lib/core/widgets/status_screen.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "4.1", requirements: [REQ-005, REQ-007]}
+  - task_id: T010
+    description: "Implementing stable policy-descriptor redirects and restricted screen"
+    status: completed
+    implementation: {files: [lib/core/routing/app_router.dart, lib/features/auth/presentation/unsupported_role_screen.dart, lib/features/auth/presentation/role_landing_screens.dart, lib/app.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "4.1", requirements: [REQ-003, REQ-009]}
+  - task_id: T011
+    description: "Implementing owner and price-free employee placeholders"
+    status: completed
+    implementation: {files: [lib/features/auth/presentation/owner_home_screen.dart, lib/features/attendance/presentation/employee_scan_screen.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "4.1", requirements: [REQ-009]}
+  - task_id: T012
+    description: "Implementing confirmed refresh transport and durable rotation"
+    status: completed
+    implementation: {files: [lib/features/auth/data/refresh_transport.dart, lib/features/auth/data/auth_repository_impl.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "5.1", requirements: [REQ-005, REQ-006]}
+  - task_id: T013
+    description: "Implementing injected single-flight proactive/resume renewal and expiry gates"
+    status: completed
+    implementation: {files: [lib/features/auth/presentation/auth_controller.dart, lib/features/auth/presentation/session_tools.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "5.1", requirements: [REQ-005, REQ-006, REQ-007]}
+  - task_id: T014
+    description: "Implementing access Bearer, bounded 401 recovery and safe-only reads"
+    status: completed
+    implementation: {files: [lib/core/network/auth_interceptor.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "5.1", requirements: [REQ-006, REQ-008]}
+  - task_id: T015
+    description: "Implementing exact shop context GET and strict price-free mapping"
+    status: completed
+    implementation: {files: [lib/features/shop_context/domain/shop_context.dart, lib/features/shop_context/domain/shop_context_repository.dart, lib/features/shop_context/data/shop_context_dto.dart, lib/features/shop_context/data/shop_context_repository_impl.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "5.2", requirements: [REQ-011]}
+  - task_id: T016
+    description: "Implementing context loading/error/empty gate and session isolation"
+    status: completed
+    implementation: {files: [lib/features/shop_context/presentation/shop_context_controller.dart, lib/features/shop_context/presentation/shop_context_gate_screen.dart, lib/core/routing/app_router.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "5.2", requirements: [REQ-007, REQ-009, REQ-011]}
+  - task_id: T017
+    description: "Implementing explicit MOCK DEMO ONLY membership-checked selection"
+    status: completed
+    implementation: {files: [lib/features/shop_context/presentation/demo_shop_switcher.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "5.2", requirements: [REQ-011]}
+  - task_id: T018
+    description: "Implementing deterministic policy, DTO, storage, lifecycle, network and UI tests"
+    status: completed
+    implementation: {files: [test/core, test/features/auth, test/features/shop_context, test/support/fakes.dart]}
+    verification: *verification
+    upstream_trace: {plan_item: "6.1", requirements: [REQ-001, REQ-002, REQ-003, REQ-004, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, REQ-010, REQ-011]}
+  - task_id: T019
+    description: "Documenting contracts/run instructions and verifying automation/native runtime"
+    status: blocked
+    implementation: {files: [README.md, docs/PROJECT_SPEC.md, docs/login-flow/plan.md, docs/login-flow/batch-report.yaml, docs/login-flow/checkpoints/tasks-to-impl.yaml]}
+    verification: *verification
+    notes: "Automated checks complete; native manual evidence not available."
+    upstream_trace: {plan_item: "6.1", requirements: [REQ-001, REQ-002, REQ-003, REQ-004, REQ-005, REQ-006, REQ-007, REQ-008, REQ-009, REQ-010, REQ-011]}
+pending_tasks:
+  - task_id: T019
+    blocked_by: [connected_android_or_ios_device]
+    priority: P1
+    remaining: "Manual native light/dark/enlarged text, secure storage, debug HTTP and lifecycle/resume evidence."
+untracked_changes: []
+traceability_chain:
+  - {requirement: REQ-001, tasks: [T008, T018], evidence: [lifecycle_test.dart, route_widget_test.dart], status: complete}
+  - {requirement: REQ-002, tasks: [T004, T005, T007, T018], evidence: [dto_test.dart, repository_test.dart], status: complete}
+  - {requirement: REQ-003, tasks: [T004, T005, T010, T018], evidence: [role_policy_test.dart, route_widget_test.dart], status: complete}
+  - {requirement: REQ-004, tasks: [T005, T008, T018], evidence: [dto_test.dart, lifecycle_test.dart, route_widget_test.dart], status: complete}
+  - {requirement: REQ-005, tasks: [T006, T009, T012, T013, T018, T019], evidence: [repository_test.dart, lifecycle_test.dart], status: partial_native_pending}
+  - {requirement: REQ-006, tasks: [T012, T013, T014, T018, T019], evidence: [lifecycle_test.dart, auth_interceptor_test.dart], status: partial_native_pending}
+  - {requirement: REQ-007, tasks: [T009, T013, T016, T018, T019], evidence: [repository_test.dart, controller_test.dart, route_widget_test.dart], status: partial_native_pending}
+  - {requirement: REQ-008, tasks: [T001, T002, T019], evidence: [config_test.dart, platform_config_test.dart], status: partial_native_pending}
+  - {requirement: REQ-009, tasks: [T010, T011, T016, T018], evidence: [route_widget_test.dart], status: complete_placeholders}
+  - {requirement: REQ-010, tasks: [T001, T002, T003, T018, T019], evidence: [flutter_analyze, failure_mapper_test.dart, route_widget_test.dart], status: partial_native_pending}
+  - {requirement: REQ-011, tasks: [T015, T016, T017, T018], evidence: [shop_context_test.dart, controller_test.dart, route_widget_test.dart], status: complete_real_switching_deferred}
+validation:
+  passed: false
+  automated_checks_passed: true
+  errors: []
+  warnings: ["No live backend credential probes or native APK/IPA verification performed."]
+  blocking_issues: ["T019 native manual validation pending; not production release sign-off."]

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="100" viewBox="0 0 360 100" fill="none">
+  <!-- Original Bookixo Pro salon-tool line art: scissors, comb and hairdryer. -->
+  <g stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="40" cy="69" r="11"/>
+    <circle cx="70" cy="69" r="11"/>
+    <path d="M47 60 79 20Q83 17 82 23L61 54M63 60 31 20Q27 17 28 23L49 54"/>
+    <circle cx="55" cy="52" r="3"/>
+    <path d="M115 30h93a5 5 0 0 1 5 5v9H110v-9a5 5 0 0 1 5-5Z"/>
+    <path d="M114 44v27m8-27v23m8-23v27m8-27v23m8-23v27m8-27v23m8-23v27m8-27v23m8-23v27m8-27v23m8-23v27m8-27v23m8-23v27"/>
+    <path d="M265 28c-15 0-25 9-25 21s10 21 25 21h34V28h-34Z"/>
+    <path d="m299 33 22-6v44l-22-6M264 70l4 18h17l-6-18M249 40v18m7-23v27m7-28v28"/>
+    <path d="M330 38c8 3 8 7 0 10m0 6c8 3 8 7 0 10M279 88c0 7 10 9 19 5"/>
+    <path d="M19 91h69m23 0h101m28 0h20"/>
+  </g>
+</svg>
